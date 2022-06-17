@@ -15,6 +15,6 @@
 
 <hr>
 
-<a href="${pageContext.request.contextPath}/">Back to HomePage</a>
+<a href="${pageContext.request.contextPath}/employees">Back to HomePage</a>
 </body>
 </html>

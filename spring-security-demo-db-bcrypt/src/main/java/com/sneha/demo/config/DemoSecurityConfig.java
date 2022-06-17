@@ -41,12 +41,13 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.loginProcessingUrl("/authenticateUser").permitAll().and().logout().permitAll();
 		
 		http.authorizeRequests()
-		.antMatchers("/").hasRole("EMPLOYEE")
+		.antMatchers("/").permitAll()
+		.antMatchers("/employees").hasRole("EMPLOYEE")
 		.antMatchers("/leaders/**").hasRole("MANAGER")
 		.antMatchers("/systems/**").hasRole("ADMIN")
 		.and()
 		.formLogin().loginPage("/showMyLoginPage")
-		.loginProcessingUrl("/authenticateUser").permitAll().and().logout().permitAll().and().exceptionHandling().accessDeniedPage("/access-denied");
+		.loginProcessingUrl("/authenticateUser").permitAll().and().logout().logoutSuccessUrl("/").permitAll().and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
 
 	
